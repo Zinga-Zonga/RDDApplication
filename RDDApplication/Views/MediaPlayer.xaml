@@ -7,24 +7,24 @@
              xmlns:viewmodels="clr-namespace:RDDApplication.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="700">
-    <UserControl.DataContext>
-        <viewmodels:MediaPlayerVM />
-    </UserControl.DataContext>
+    
     <Grid Background="Transparent">
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="75">
-            </RowDefinition>
-            <RowDefinition>
-            </RowDefinition>
+            <RowDefinition/>
+
+            <RowDefinition Height="20"/>
+
             <RowDefinition Height="75">
             </RowDefinition>
         </Grid.RowDefinitions>
-        <MediaElement x:Name="VideoPlayer" Source="{Binding Video}"  LoadedBehavior="Manual" Grid.Row="1">
+        <Image Grid.Row="0" x:Name="LoadingImage" Source="{Binding ImagePath}"></Image>
+        <MediaElement x:Name="VideoPlayer" Source="{Binding Video}" ScrubbingEnabled="True" LoadedBehavior="Manual" Grid.Row="0" Loaded="PlayPlayer" MediaOpened="VideoPlayer_MediaOpened" MediaEnded="VideoPlayer_MediaEnded">
             
         </MediaElement>
+        <Slider Margin="20, 0, 20, 0" Grid.Row="1" x:Name="VideoSlider" Minimum="0" IsMoveToPointEnabled="True"/>
         <WrapPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Button x:Name="PlayButton" Style="{StaticResource ResourceKey=UIButtonTheme}" FontSize="15" HorizontalAlignment="Left" Grid.Row="2" Margin="20,0,20,0" Click="PlayPlayer">
                 Воспроизвести

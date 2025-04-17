@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using RDDApplication.ViewModels;
 using System.Windows;
 
 namespace RDDApplication
@@ -13,5 +8,9 @@ namespace RDDApplication
     /// </summary>
     public partial class App : Application
     {
+        public static string VideoPath {  get; set; }
+        public static string StatisticPath {  get; set; }
+        public static string FolderOfVideos = "Results/Videos/";
+        public static string FolderOfStatistics = "Results/Statistic/";
     }
 }

@@ -7,18 +7,24 @@
         xmlns:view="clr-namespace:RDDApplication.Views" 
         xmlns:viewmodels="clr-namespace:RDDApplication.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="900"
+        Title="RDDApplication" Height="600" Width="900"
         ResizeMode="NoResize">
-    <Window.DataContext>
-        <viewmodels:MainWindowVM/>
-    </Window.DataContext>
+    
     <Window.Resources>
         <DataTemplate DataType="{x:Type viewmodels:MediaPlayerVM}">
             <view:MediaPlayer/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:VideoFilePageVM}">
+            <view:VideosPage/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:StatisticFilePageVM}">
+            <view:StatisticFilesPage/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:ShowStatisticFilePageVM}">
+            <view:ShowStatisticPage/>
+        </DataTemplate>
     </Window.Resources>
-    <Border Background="#272537"
-       >
+    <Border Background="#272537">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200">
@@ -33,9 +39,7 @@
                 </RowDefinition>
 
             </Grid.RowDefinitions>
-            <Rectangle Grid.Row="0" Grid.Column="0"
-                       Fill="#310062">
-
+            <Rectangle Grid.Row="0" Grid.Column="0" Fill="#310062">
             </Rectangle>
             <TextBlock Grid.Row="0" Text="Обнаружение дефектов на дорожном покрытии"
                    TextWrapping="Wrap"
@@ -60,12 +64,14 @@
                          Foreground="White"
                          FontSize="14"
                          Style="{StaticResource ResourceKey=MenuButtonTheme}" RenderTransformOrigin="0.503,0.5"
+                         Command="{Binding VideoFilePageVMCommand}"
                          />
                 <RadioButton Content="Статистика"
                          Height="50"
                          Foreground="White"
                          FontSize="14"
                          Style="{StaticResource ResourceKey=MenuButtonTheme}" RenderTransformOrigin="0.503,0.5"
+                         Command="{Binding StatisticFilePageVMCommand}"
                          />
                 <RadioButton Content=""
                          Height="275"
